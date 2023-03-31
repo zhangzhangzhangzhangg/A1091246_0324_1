@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+class Animal {
+
+    String name;
+    double height, weight, speed;
+
+    public Animal(String name, double height, double weight, double speed) {
+        this.name = name;
+        this.height = height;
+        this.weight = weight;
+        this.speed = speed;
+    }
+
+    public void show() {
+
+        String[][] data = {
+            {"姓名", "身高", "體重", "速度"},
+            {name, String.valueOf(height), String.valueOf(weight), String.valueOf(speed)}
+        };
+
+        int[] colWidths = new int[data[0].length];
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[i].length; j++) {
+                colWidths[j] = Math.max(colWidths[j], data[i][j].length());
+            }
+        }
+
+        // 顯示表格
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[i].length; j++) {
+                String padded = String.format("%-" + colWidths[j] + "s", data[i][j]);
+                System.out.print(padded + "  ");
+            }
+            System.out.println();
+        }
+    }
+
+    public double distance(double x, double y) {
+        double distance = x * y * speed;
+        return distance;
+    }
+
+    public double distance(double x) {
+        return x * speed;
+    }
+}
+
+public class A1091246_0324_1 {
+    public static void main(String[] args) {
+
+        Animal animal1 = new Animal("雪寶", 1.1, 52, 100);
+        Animal animal2 = new Animal("驢子", 1.5, 99, 200);
+        Animal animal3 = new Animal("安那", 1.7, 48, 120);
+        Animal animal4 = new Animal("愛沙", 1.7, 50, 120);
+
+        animal1.show();
+        animal2.show();
+        animal3.show();
+        animal4.show();
+
+        
+        animal1.show();
+        animal2.show();
+        animal3.show();
+        animal4.show();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("請輸入雪寶跑步的時間：");
+        double x1 = scanner.nextDouble();
+        System.out.print("請輸入雪寶跑步的加速度：");
+        double y1 = scanner.nextDouble();
+        double distance1 = animal1.distance(x1, y1);
+        System.out.println("雪寶跑了 " + distance1 + " 公尺");
+
+        System.out.print("請輸入驢子跑步的時間：");
+        double x2 = scanner.nextDouble();
+        System.out.print("請輸入驢子跑步的加速度：");
+        double y2 = scanner.nextDouble();
+        double distance2 = animal2.distance(x2, y2);
+        System.out.println("驢子跑了 " + distance2 + " 公尺");
+
+        System.out.print("請輸入安那跑步的時間：");
+        double x3 = scanner.nextDouble();
+        System.out.print("請輸入安那跑步的加速度：");
+        double y3 = scanner.nextDouble();
+        double distance3 = animal3.distance(x3, y3);
+        System.out.println("安那跑了 " + distance3 + " 公尺");
+
+        System.out.print("請輸入愛沙跑步的時間：");
+        double x4 = scanner.nextDouble();
+        System.out.print("請輸入愛沙跑步的加速度：");
+        double y4 = scanner.nextDouble();
+        double distance4 = animal4.distance(x4, y4);
+        System.out.println("愛沙跑了 " + distance4 + " 公尺");
+        scanner.close();
+    }
+
+}
